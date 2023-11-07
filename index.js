@@ -24,7 +24,6 @@ app.get("/auth", async (req, res) => {
         scopes: SCOPES,
     });
 
-    // console.log("THis is AUTH = ", auth);
 
     const gmail = google.gmail({ version: "v1", auth });
 
@@ -70,7 +69,7 @@ app.get("/auth", async (req, res) => {
         ).value;
 
         const replyTo = from.match(/<(.*)>/)[1];
-        const replySubject = subject.startsWith("Re:") ? subject : `Re: ${subject}`; //Re: new work has arrived
+        const replySubject = subject.startsWith("Re:") ? subject : `Re: ${subject}`; //Re: <Subject>
         const replyBody = `Hey,\n\nI've received your message, I will get back to you soon.\n\nThanks & Regards,\nSiddharth Khuntwal`;
 
         const rawMessage = [
