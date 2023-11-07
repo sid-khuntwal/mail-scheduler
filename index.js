@@ -33,14 +33,6 @@ app.get("/auth", async (req, res) => {
 
     const LABEL_NAME = "Vacation";
 
-    // Load credentials from file
-    async function loadCredentials() {
-        const filePath = path.join(process.cwd(), "credentials.json");
-        const content = await fs.readFile(filePath, { encoding: "utf8" });
-        return JSON.parse(content);
-    }
-
-
     // Get messages that have no prior replies
     async function getUnrepliedMessages(auth) {
         const gmail = google.gmail({ version: "v1", auth });
